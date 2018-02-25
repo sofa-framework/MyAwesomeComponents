@@ -13,11 +13,13 @@ set(CONFIG_FILES
 
 # Our nice new SOFA Components
 set(HEADER_FILES
-    FanForceField.h
-    FanForceField.inl
+    src/ExplicitBDFSolver.h
+    src/FanForceField.h
+    src/FanForceField.inl
 )
 set(SOURCE_FILES
-    FanForceField.cpp
+    src/ExplicitBDFSolver.cpp
+    src/FanForceField.cpp
 )
 
 # SOFA plugin are basically libraries
