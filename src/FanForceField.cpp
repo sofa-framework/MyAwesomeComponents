@@ -20,6 +20,8 @@
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
 
+#define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
+
 #include "FanForceField.inl"
 #include <sofa/core/ObjectFactory.h>
 
