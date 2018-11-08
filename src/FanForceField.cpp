@@ -1,5 +1,5 @@
 /******************************************************************************
-*       SOFA, Simulation Open-Framework Architecture, master				  *
+*       SOFA, Simulation Open-Framework Architecture, master    	      *
 *                (c) 2006-2018 INRIA, USTL, UJF, CNRS, MGH                    *
 *                                                                             *
 * This program is free software; you can redistribute it and/or modify it     *
@@ -20,9 +20,6 @@
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
 
-#ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
-#define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
-
 #include "FanForceField.inl"
 #include <sofa/core/ObjectFactory.h>
 
@@ -42,25 +39,13 @@ using namespace sofa::defaulttype;
 
 
 int FanForceFieldClass = core::RegisterObject("Random forces applied to all points")
-#ifndef SOFA_FLOAT
-        .add< FanForceField<Vec3dTypes> >(true)
-#endif
-#ifndef SOFA_DOUBLE
-        .add< FanForceField<Vec3fTypes> >(true)
-#endif
-        ;
+        .add< FanForceField<Vec3Types> >(true);
 
-#ifndef SOFA_FLOAT
-template class MYAWESOMECOMPONENTS_API FanForceField<Vec3dTypes>;
-#endif
-#ifndef SOFA_DOUBLE
-template class MYAWESOMECOMPONENTS_API FanForceField<Vec3fTypes>;
-#endif
+template class MYAWESOMECOMPONENTS_API FanForceField<Vec3Types>;
+        
 
 } // namespace forcefield
 
 } // namespace component
 
 } // namespace sofa
-
-#endif
