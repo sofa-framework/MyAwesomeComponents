@@ -23,8 +23,6 @@
 #define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_INL
 
 #include "FanForceField.h"
-#include <SofaBaseTopology/TopologySubsetData.inl>
-
 //#include <ctime>
 
 
