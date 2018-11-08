@@ -41,8 +41,6 @@ namespace forcefield
 using namespace sofa::defaulttype;
 
 
-SOFA_DECL_CLASS(FanForceField)
-
 int FanForceFieldClass = core::RegisterObject("Random forces applied to all points")
 #ifndef SOFA_FLOAT
         .add< FanForceField<Vec3dTypes> >(true)
