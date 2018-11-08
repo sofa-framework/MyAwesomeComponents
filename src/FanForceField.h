@@ -53,26 +53,12 @@ public:
     /// Force applied at each point
     Data< Deriv > d_force;
 
-    /// Range for random force coefficient : [randForceMin ; randForceMax]
-//    Data<float> randForceMinCoeff;
-//    Data<float> randForceMaxCoeff;
-
-    /// Probability to change random force coefficient
-//    Data<float> randForceCoeffChangeProba;
-protected:
-    /// Pointer to the current topology
-    sofa::core::topology::BaseMeshTopology* topology;
-
-    /// Used to get random numbers
-//    sofa::helper::RandomGenerator randomGenerator;
-
-    /// Random coefficient applied to forces
-//    float randForceCoeff;
-
-protected:
+protected:    
     /// Component constructor
     FanForceField();
-
+    /// Pointer to the current topology
+    sofa::core::topology::BaseMeshTopology* topology;
+    
 public:
     /// Init function
     void init();
@@ -85,10 +71,30 @@ public:
 
     virtual SReal getPotentialEnergy(const core::MechanicalParams* /*params*/, const DataVecCoord& /*x*/) const { return 0; } // Keep it simple
 
+public:
+
+    /// Range for random force coefficient : [randForceMin ; randForceMax]
+//    Data<float> randForceMinCoeff;
+//    Data<float> randForceMaxCoeff;
+
+    /// Probability to change random force coefficient
+//    Data<float> randForceCoeffChangeProba;
+
+protected:
+    /// Used to get random numbers
+//    sofa::helper::RandomGenerator randomGenerator;
+
+    /// Random coefficient applied to forces
+//    float randForceCoeff;
+
 };
 
 } // namespace forcefield
 } // namespace component
 } // namespace sofa
+
+#ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
+extern template class MYAWESOMECOMPONENTS_API FanForceField<defaulttype::Vec3Types>;
+#endif
 
 #endif // SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_H
