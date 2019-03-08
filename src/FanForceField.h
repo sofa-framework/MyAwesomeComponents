@@ -27,6 +27,7 @@
 #include <sofa/core/behavior/ForceField.h>
 #include <sofa/helper/RandomGenerator.h>
 #include <sofa/defaulttype/VecTypes.h>
+#include <sofa/core/topology/BaseMeshTopology.h>
 
 
 namespace sofa
