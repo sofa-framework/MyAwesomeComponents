@@ -1,6 +1,6 @@
 /******************************************************************************
-*       SOFA, Simulation Open-Framework Architecture, master    	      *
-*                (c) 2006-2018 INRIA, USTL, UJF, CNRS, MGH                    *
+*       SOFA, Simulation Open-Framework Architecture, development version     *
+*                (c) 2006-2017 INRIA, USTL, UJF, CNRS, MGH                    *
 *                                                                             *
 * This program is free software; you can redistribute it and/or modify it     *
 * under the terms of the GNU Lesser General Public License as published by    *
@@ -19,35 +19,57 @@
 *                                                                             *
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
-
-#define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
-
-#include "FanForceField.inl"
-#include <sofa/core/ObjectFactory.h>
-
-#include <sofa/defaulttype/VecTypes.h>
-#include <sofa/defaulttype/RigidTypes.h>
+#include <MyAwesomeComponents/config.h>
 
 namespace sofa
 {
-
 namespace component
 {
 
-namespace forcefield
+extern "C" {
+
+MYAWESOMECOMPONENTS_API
+void initExternalModule()
 {
+    static bool first = true;
+    if (first)
+    {
+        first = false;
+    }
+}
 
-using namespace sofa::defaulttype;
+MYAWESOMECOMPONENTS_API
+const char* getModuleName()
+{
+    return "MyAwesomeComponents";
+}
 
+MYAWESOMECOMPONENTS_API
+const char* getModuleVersion()
+{
+    return "1.0";
+}
 
-int FanForceFieldClass = core::RegisterObject("Random forces applied to all points")
-        .add< FanForceField<Vec3Types> >(true);
+MYAWESOMECOMPONENTS_API
+const char* getModuleLicense()
+{
+    return "LGPL";
+}
 
-template class MYAWESOMECOMPONENTS_API FanForceField<Vec3Types>;
-        
+MYAWESOMECOMPONENTS_API
+const char* getModuleDescription()
+{
+    return "SOFA plugin example";
+}
 
-} // namespace forcefield
+MYAWESOMECOMPONENTS_API
+const char* getModuleComponentList()
+{
+    // string containing the names of the classes provided by the plugin
+    return "FanForceField";
+}
+
+} // extern "C"
 
 } // namespace component
-
 } // namespace sofa

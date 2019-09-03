@@ -22,7 +22,7 @@
 #ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_INL
 #define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_INL
 
-#include "FanForceField.h"
+#include <MyAwesomeComponents/FanForceField.h>
 //#include <ctime>
 
 

@@ -1,26 +1,25 @@
 cmake_minimum_required(VERSION 3.1)
-project(MyAwesomeComponents)
+project(MyAwesomeComponents VERSION 1.0)
 
 # SOFA packages containing our dependencies
-find_package(SofaFramework REQUIRED) # Needed to include SofaCore, SofaHelper and SofaDefaultType modules
-find_package(SofaGeneral REQUIRED) # Needed to include SofaBaseTopology modules
+find_package(SofaFramework REQUIRED) # Needed to use SofaCore, SofaHelper and SofaDefaultType
+find_package(SofaGeneral REQUIRED) # Needed to use SofaBaseTopology
 
 # Config files (tell SOFA this is a plugin)
 set(CONFIG_FILES
-    config.h
-    initMyAwesomeComponents.cpp
-)
-
+    src/MyAwesomeComponents/config.h
+    src/MyAwesomeComponents/initMyAwesomeComponents.cpp
+    )
 # Our nice new SOFA Components
 set(HEADER_FILES
-    src/ExplicitBDFSolver.h
-    src/FanForceField.h
-    src/FanForceField.inl
-)
+    src/MyAwesomeComponents/ExplicitBDFSolver.h
+    src/MyAwesomeComponents/FanForceField.h
+    src/MyAwesomeComponents/FanForceField.inl
+    )
 set(SOURCE_FILES
-    src/ExplicitBDFSolver.cpp
-    src/FanForceField.cpp
-)
+    src/MyAwesomeComponents/ExplicitBDFSolver.cpp
+    src/MyAwesomeComponents/FanForceField.cpp
+    )
 
 # SOFA plugin are basically libraries
 add_library(${PROJECT_NAME} SHARED ${CONFIG_FILES} ${HEADER_FILES} ${SOURCE_FILES})
@@ -31,7 +30,22 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     SofaHelper
     SofaDefaultType
     SofaBaseTopology
-)
+    )
 
 # Needed to build on Windows (dllimport/dllexport mechanism)
-set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-DSOFA_BUILD_MYAWESOMECOMPONENTS")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "-DSOFA_BUILD_MYAWESOMECOMPONENTS")
+
+# Set include directories to be able to resolve "#include <MyAwesomeComponents/XXX.h>"
+target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>")
+target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>")
+
+# Create package Config, Version & Target files.
+# Deploy the headers, resources, scenes & examples.
+sofa_generate_package(
+    NAME ${PROJECT_NAME}
+    TARGETS ${PROJECT_NAME}
+    VERSION ${PROJECT_VERSION}
+    INCLUDE_SOURCE_DIR src/MyAwesomeComponents
+    INCLUDE_INSTALL_DIR MyAwesomeComponents
+    )
+

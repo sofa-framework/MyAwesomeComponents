@@ -22,7 +22,7 @@
 #ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_H
 #define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_H
 
-#include "../config.h"
+#include <MyAwesomeComponents/config.h>
 
 #include <sofa/core/behavior/ForceField.h>
 #include <sofa/helper/RandomGenerator.h>
