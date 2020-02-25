@@ -62,24 +62,24 @@ protected:
     
 public:
     /// Init function
-    void init();
+    void init() override;
 
     /// Forces addition for explicit and implicit integration schemes
-    virtual void addForce (const core::MechanicalParams* params, DataVecDeriv& currentForce, const DataVecCoord& currentPosition, const DataVecDeriv& currentVelocities);
+    virtual void addForce (const core::MechanicalParams* params, DataVecDeriv& currentForce, const DataVecCoord& currentPosition, const DataVecDeriv& currentVelocities) override;
 
     /// Forces addition for implicit integration schemes
-    virtual void addDForce(const core::MechanicalParams* /*mparams*/, DataVecDeriv& /*d_df*/ , const DataVecDeriv& /*d_dx*/) {}
+    virtual void addDForce(const core::MechanicalParams* /*mparams*/, DataVecDeriv& /*d_df*/ , const DataVecDeriv& /*d_dx*/) override {}
 
-    virtual SReal getPotentialEnergy(const core::MechanicalParams* /*params*/, const DataVecCoord& /*x*/) const { return 0; } // Keep it simple
+    virtual SReal getPotentialEnergy(const core::MechanicalParams* /*params*/, const DataVecCoord& /*x*/) const override { return 0; } // Keep it simple
 
 public:
 
     /// Range for random force coefficient : [randForceMin ; randForceMax]
-//    Data<float> randForceMinCoeff;
-//    Data<float> randForceMaxCoeff;
+//    Data<float> d_randForceMinCoeff;
+//    Data<float> d_randForceMaxCoeff;
 
     /// Probability to change random force coefficient
-//    Data<float> randForceCoeffChangeProba;
+//    Data<float> d_randForceCoeffChangeProba;
 
 protected:
     /// Used to get random numbers

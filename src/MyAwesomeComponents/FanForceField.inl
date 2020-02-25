@@ -39,9 +39,9 @@ namespace forcefield
 template<class DataTypes>
 FanForceField<DataTypes>::FanForceField()
     : d_force(initData(&d_force, "force", "applied force to all points"))
-//    , randForceMinCoeff(initData(&randForceMinCoeff, "randForceMinCoeff", ""))
-//    , randForceMaxCoeff(initData(&randForceMaxCoeff, "randForceMaxCoeff", ""))
-//    , randForceCoeffChangeProba(initData(&randForceCoeffChangeProba, "randForceCoeffChangeProba", ""))
+//    , d_randForceMinCoeff(initData(&d_randForceMinCoeff, "randForceMinCoeff", ""))
+//    , d_randForceMaxCoeff(initData(&d_randForceMaxCoeff, "randForceMaxCoeff", ""))
+//    , d_randForceCoeffChangeProba(initData(&d_randForceCoeffChangeProba, "randForceCoeffChangeProba", ""))
 {
     // Nothing more is done here
 }
@@ -63,9 +63,9 @@ template<class DataTypes>
 void FanForceField<DataTypes>::addForce(const core::MechanicalParams* /*params*/, DataVecDeriv& currentForce, const DataVecCoord& /*currentPosition*/, const DataVecDeriv& /*currentVelocities*/)
 {
 //    float randProba = randomGenerator.random<float>(0, 1);
-//    if( randProba < randForceCoeffChangeProba.getValue() )
+//    if( randProba < d_randForceCoeffChangeProba.getValue() )
 //    {
-//        randForceCoeff = randomGenerator.random<float>(randForceMinCoeff.getValue(), randForceMaxCoeff.getValue()); // generating new random force coefficient
+//        randForceCoeff = randomGenerator.random<float>(d_randForceMinCoeff.getValue(), d_randForceMaxCoeff.getValue()); // generating new random force coefficient
 //    }
 
     sofa::helper::WriteAccessor<core::objectmodel::Data< VecDeriv> > force = currentForce; // create writer on the current force
