@@ -1,6 +1,6 @@
 /******************************************************************************
-*       SOFA, Simulation Open-Framework Architecture, master				  *
-*                (c) 2006-2018 INRIA, USTL, UJF, CNRS, MGH                    *
+*                 SOFA, Simulation Open-Framework Architecture                *
+*                    (c) 2006 INRIA, USTL, UJF, CNRS, MGH                     *
 *                                                                             *
 * This program is free software; you can redistribute it and/or modify it     *
 * under the terms of the GNU Lesser General Public License as published by    *
@@ -30,11 +30,7 @@
 #include <sofa/core/topology/BaseMeshTopology.h>
 
 
-namespace sofa
-{
-namespace component
-{
-namespace forcefield
+namespace sofa::component::forcefield
 {
 
 template<class DataTypes>
@@ -58,7 +54,7 @@ protected:
     /// Component constructor
     FanForceField();
     /// Pointer to the current topology
-    sofa::core::topology::BaseMeshTopology* topology;
+    sofa::core::topology::BaseMeshTopology* m_topology;
     
 public:
     /// Init function
@@ -83,16 +79,14 @@ public:
 
 protected:
     /// Used to get random numbers
-//    sofa::helper::RandomGenerator randomGenerator;
+//    sofa::helper::RandomGenerator m_randomGenerator;
 
     /// Random coefficient applied to forces
-//    float randForceCoeff;
+//    float m_randForceCoeff;
 
 };
 
-} // namespace forcefield
-} // namespace component
-} // namespace sofa
+} // namespace sofa::component::forcefield
 
 #ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
 extern template class MYAWESOMECOMPONENTS_API FanForceField<defaulttype::Vec3Types>;

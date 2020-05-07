@@ -1,6 +1,6 @@
 /******************************************************************************
-*       SOFA, Simulation Open-Framework Architecture, master				  *
-*                (c) 2006-2018 INRIA, USTL, UJF, CNRS, MGH                    *
+*                 SOFA, Simulation Open-Framework Architecture                *
+*                    (c) 2006 INRIA, USTL, UJF, CNRS, MGH                     *
 *                                                                             *
 * This program is free software; you can redistribute it and/or modify it     *
 * under the terms of the GNU Lesser General Public License as published by    *
@@ -26,15 +26,8 @@
 //#include <ctime>
 
 
-namespace sofa
+namespace sofa::component::forcefield
 {
-
-namespace component
-{
-
-namespace forcefield
-{
-
 
 template<class DataTypes>
 FanForceField<DataTypes>::FanForceField()
@@ -50,10 +43,10 @@ FanForceField<DataTypes>::FanForceField()
 template<class DataTypes>
 void FanForceField<DataTypes>::init()
 {
-    topology = this->getContext()->getMeshTopology(); // get the mesh topology to access to the points
+    m_topology = this->getContext()->getMeshTopology(); // get the mesh topology to access to the points
 
-//    randomGenerator.initSeed( (unsigned int)time(NULL) ); // init random generator
-//    randForceCoeff = 1.0; // init random force coefficient
+//    m_randomGenerator.initSeed( (unsigned int)time(NULL) ); // init random generator
+//    m_randForceCoeff = 1.0; // init random force coefficient
 
     Inherit::init(); // call parent class init
 }
@@ -62,25 +55,20 @@ void FanForceField<DataTypes>::init()
 template<class DataTypes>
 void FanForceField<DataTypes>::addForce(const core::MechanicalParams* /*params*/, DataVecDeriv& currentForce, const DataVecCoord& /*currentPosition*/, const DataVecDeriv& /*currentVelocities*/)
 {
-//    float randProba = randomGenerator.random<float>(0, 1);
+//    float randProba = m_randomGenerator.random<float>(0, 1);
 //    if( randProba < d_randForceCoeffChangeProba.getValue() )
 //    {
-//        randForceCoeff = randomGenerator.random<float>(d_randForceMinCoeff.getValue(), d_randForceMaxCoeff.getValue()); // generating new random force coefficient
+//        m_randForceCoeff = m_randomGenerator.random<float>(d_randForceMinCoeff.getValue(), d_randForceMaxCoeff.getValue()); // generating new random force coefficient
 //    }
 
     sofa::helper::WriteAccessor<core::objectmodel::Data< VecDeriv> > force = currentForce; // create writer on the current force
-    for(int i = 0 ; i < topology->getNbPoints() ; i++)
+    for(int i = 0 ; i < m_topology->getNbPoints() ; i++)
     {
-        force[i] += d_force.getValue(); // * randForceCoeff; // Add asked force randomized with coeff
+        force[i] += d_force.getValue(); // * m_randForceCoeff; // Add asked force randomized with coeff
     }
 }
 
-
-} // namespace forcefield
-
-} // namespace component
-
-} // namespace sofa
+} // namespace sofa::component::forcefield
 
 #endif // SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_INL
 

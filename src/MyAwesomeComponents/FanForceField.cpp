@@ -1,6 +1,6 @@
 /******************************************************************************
-*       SOFA, Simulation Open-Framework Architecture, master    	      *
-*                (c) 2006-2018 INRIA, USTL, UJF, CNRS, MGH                    *
+*                 SOFA, Simulation Open-Framework Architecture                *
+*                    (c) 2006 INRIA, USTL, UJF, CNRS, MGH                     *
 *                                                                             *
 * This program is free software; you can redistribute it and/or modify it     *
 * under the terms of the GNU Lesser General Public License as published by    *
@@ -28,13 +28,7 @@
 #include <sofa/defaulttype/VecTypes.h>
 #include <sofa/defaulttype/RigidTypes.h>
 
-namespace sofa
-{
-
-namespace component
-{
-
-namespace forcefield
+namespace sofa::component::forcefield
 {
 
 using namespace sofa::defaulttype;
@@ -44,10 +38,5 @@ int FanForceFieldClass = core::RegisterObject("Random forces applied to all poin
         .add< FanForceField<Vec3Types> >(true);
 
 template class MYAWESOMECOMPONENTS_API FanForceField<Vec3Types>;
-        
 
-} // namespace forcefield
-
-} // namespace component
-
-} // namespace sofa
+} // namespace sofa::component::forcefield
