@@ -39,6 +39,10 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "-DSOFA_BUILD_MYAWESOMECOMPON
 target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>")
 target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>")
 
+# nested-namespace-definition requires compiler flag '/std:c++17'
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+
 # Create package Config, Version & Target files.
 # Deploy the headers, resources, scenes & examples.
 sofa_generate_package(
