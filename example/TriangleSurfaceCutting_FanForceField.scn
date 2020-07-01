@@ -1,13 +1,14 @@
 <!-- Based on examples/Demos/TriangleSurfaceCutting.scn -->
-<Node name="root" dt="0.05" showBoundingTree="0" gravity="0 -9 1">   
+<Node name="root" dt="0.05" showBoundingTree="0" gravity="0 -9 0">   
     <VisualStyle displayFlags="showVisual showBehaviorModels" />
+    <RequiredPlugin pluginName="MyAwesomeComponents" />
     <CollisionPipeline verbose="0" />
     <BruteForceDetection name="N2" />
     <CollisionResponse response="default" />
     <MinProximityIntersection name="Proximity" alarmDistance="0.8" contactDistance="0.5" />
     <CollisionGroup />
     <Node name="SquareGravity">
-        <EulerImplicit name="cg_odesolver" printLog="false" />
+        <EulerImplicitSolver name="cg_odesolver" printLog="false" />
         <CGLinearSolver iterations="25" name="linear solver" tolerance="1.0e-9" threshold="1.0e-9" />
         <MeshGmshLoader name="meshLoader" filename="mesh/square3.msh" scale="10" createSubelements="true" />
         <include href="Objects/TriangleSetTopology.xml" src="@meshLoader" />
@@ -16,10 +17,9 @@
         <FixedConstraint indices="0 1" />
         <TriangularFEMForceField name="FEM" youngModulus="60" poissonRatio="0.3" method="large" />
         <TriangularBendingSprings name="FEM-Bend" stiffness="300" damping="1.0" />
-        <TriangleSet />
 
         <!-- ForceField implemented in the plugin -->
-        <FanForceField force="0 0 0.3" />
+        <FanForceField force="0 0 0.05" randForceMinCoeff="0" randForceMaxCoeff="1" randForceCoeffChangeProba="0.10" /> 
 
         <Node name="VisualNode" >
             <OglModel name="VisualModel" color="red" />
@@ -33,6 +33,5 @@
 
 <AddPluginRepository path="" />
 <PluginRequired pluginName="MyAwesomeComponents" />
-<FanForceField force="0 0 0.3" randForceMinCoeff="0" randForceMaxCoeff="1" randForceCoeffChangeProba="0.10" /> 
 
 -->

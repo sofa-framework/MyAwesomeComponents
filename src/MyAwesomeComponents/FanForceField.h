@@ -71,18 +71,18 @@ public:
 public:
 
     /// Range for random force coefficient : [randForceMin ; randForceMax]
-//    Data<float> d_randForceMinCoeff;
-//    Data<float> d_randForceMaxCoeff;
+    Data<float> d_randForceMinCoeff;
+    Data<float> d_randForceMaxCoeff;
 
     /// Probability to change random force coefficient
-//    Data<float> d_randForceCoeffChangeProba;
+    Data<float> d_randForceCoeffChangeProba;
 
 protected:
     /// Used to get random numbers
-//    sofa::helper::RandomGenerator m_randomGenerator;
+    sofa::helper::RandomGenerator m_randomGenerator;
 
     /// Random coefficient applied to forces
-//    float m_randForceCoeff;
+    float m_randForceCoeff;
 
 };
 
