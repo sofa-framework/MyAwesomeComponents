@@ -32,6 +32,12 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     SofaBaseTopology
     )
 
+# nested-namespace-definition requires compiler flag '/std:c++17'
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
+    )
+
 # Create package Config, Version & Target files.
 # Deploy the headers, resources, scenes & examples.
 sofa_generate_package(
