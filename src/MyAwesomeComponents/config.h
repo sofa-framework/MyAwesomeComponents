@@ -19,15 +19,12 @@
 *                                                                             *
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
-#ifndef MYAWESOMECOMPONENTS_H
-#define MYAWESOMECOMPONENTS_H
+#pragma once
 
-#include <sofa/helper/system/config.h>
+#include <sofa/config.h>
 
 #ifdef SOFA_BUILD_MYAWESOMECOMPONENTS
 #  define MYAWESOMECOMPONENTS_API SOFA_EXPORT_DYNAMIC_LIBRARY
 #else
 #  define MYAWESOMECOMPONENTS_API SOFA_IMPORT_DYNAMIC_LIBRARY
 #endif
-
-#endif // MYAWESOMECOMPONENTS_H

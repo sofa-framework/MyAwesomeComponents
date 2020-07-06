@@ -32,9 +32,9 @@ namespace sofa::component::forcefield
 template<class DataTypes>
 FanForceField<DataTypes>::FanForceField()
     : d_force(initData(&d_force, "force", "applied force to all points"))
-//    , d_randForceMinCoeff(initData(&d_randForceMinCoeff, "randForceMinCoeff", ""))
-//    , d_randForceMaxCoeff(initData(&d_randForceMaxCoeff, "randForceMaxCoeff", ""))
-//    , d_randForceCoeffChangeProba(initData(&d_randForceCoeffChangeProba, "randForceCoeffChangeProba", ""))
+    , d_randForceMinCoeff(initData(&d_randForceMinCoeff, "randForceMinCoeff", ""))
+    , d_randForceMaxCoeff(initData(&d_randForceMaxCoeff, "randForceMaxCoeff", ""))
+    , d_randForceCoeffChangeProba(initData(&d_randForceCoeffChangeProba, "randForceCoeffChangeProba", ""))
 {
     // Nothing more is done here
 }
@@ -45,8 +45,8 @@ void FanForceField<DataTypes>::init()
 {
     m_topology = this->getContext()->getMeshTopology(); // get the mesh topology to access to the points
 
-//    m_randomGenerator.initSeed( (unsigned int)time(NULL) ); // init random generator
-//    m_randForceCoeff = 1.0; // init random force coefficient
+    m_randomGenerator.initSeed( (unsigned int)time(NULL) ); // init random generator
+    m_randForceCoeff = 1.0; // init random force coefficient
 
     Inherit::init(); // call parent class init
 }
@@ -55,16 +55,16 @@ void FanForceField<DataTypes>::init()
 template<class DataTypes>
 void FanForceField<DataTypes>::addForce(const core::MechanicalParams* /*params*/, DataVecDeriv& currentForce, const DataVecCoord& /*currentPosition*/, const DataVecDeriv& /*currentVelocities*/)
 {
-//    float randProba = m_randomGenerator.random<float>(0, 1);
-//    if( randProba < d_randForceCoeffChangeProba.getValue() )
-//    {
-//        m_randForceCoeff = m_randomGenerator.random<float>(d_randForceMinCoeff.getValue(), d_randForceMaxCoeff.getValue()); // generating new random force coefficient
-//    }
+    float randProba = m_randomGenerator.random<float>(0, 1);
+    if( randProba < d_randForceCoeffChangeProba.getValue() )
+    {
+        m_randForceCoeff = m_randomGenerator.random<float>(d_randForceMinCoeff.getValue(), d_randForceMaxCoeff.getValue()); // generating new random force coefficient
+    }
 
     sofa::helper::WriteAccessor<core::objectmodel::Data< VecDeriv> > force = currentForce; // create writer on the current force
     for(int i = 0 ; i < m_topology->getNbPoints() ; i++)
     {
-        force[i] += d_force.getValue(); // * m_randForceCoeff; // Add asked force randomized with coeff
+        force[i] += d_force.getValue() * m_randForceCoeff; // Add asked force randomized with coeff
     }
 }
 

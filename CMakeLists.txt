@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.12)
 project(MyAwesomeComponents VERSION 1.0)
 
 # SOFA packages containing our dependencies
@@ -32,13 +32,6 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     SofaBaseTopology
     )
 
-# Needed to build on Windows (dllimport/dllexport mechanism)
-target_compile_definitions(${PROJECT_NAME} PRIVATE "-DSOFA_BUILD_MYAWESOMECOMPONENTS")
-
-# Set include directories to be able to resolve "#include <MyAwesomeComponents/XXX.h>"
-target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>")
-target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>")
-
 # nested-namespace-definition requires compiler flag '/std:c++17'
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
@@ -51,7 +44,8 @@ sofa_generate_package(
     NAME ${PROJECT_NAME}
     TARGETS ${PROJECT_NAME}
     VERSION ${PROJECT_VERSION}
-    INCLUDE_SOURCE_DIR src/MyAwesomeComponents
-    INCLUDE_INSTALL_DIR MyAwesomeComponents
+    INCLUDE_SOURCE_DIR "src"
+    INCLUDE_INSTALL_DIR "MyAwesomeComponents"
+    RELOCATABLE "plugins"
     )
 
