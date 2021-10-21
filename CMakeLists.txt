@@ -3,7 +3,7 @@ project(MyAwesomeComponents VERSION 1.0)
 
 # SOFA packages containing our dependencies
 find_package(SofaFramework REQUIRED) # Needed to use SofaCore, SofaHelper and SofaDefaultType
-find_package(SofaGeneral REQUIRED) # Needed to use SofaBaseTopology
+
 
 # Config files (tell SOFA this is a plugin)
 set(CONFIG_FILES
@@ -40,12 +40,12 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 # Create package Config, Version & Target files.
 # Deploy the headers, resources, scenes & examples.
-sofa_generate_package(
-    NAME ${PROJECT_NAME}
-    TARGETS ${PROJECT_NAME}
-    VERSION ${PROJECT_VERSION}
+sofa_create_package_with_targets(
+    PACKAGE_NAME ${PROJECT_NAME}
+    PACKAGE_VERSION ${PROJECT_VERSION}
+    TARGETS ${PROJECT_NAME} AUTO_SET_TARGET_PROPERTIES
     INCLUDE_SOURCE_DIR "src"
-    INCLUDE_INSTALL_DIR "MyAwesomeComponents"
+    INCLUDE_INSTALL_DIR ${PROJECT_NAME}
+    EXAMPLE_INSTALL_DIR "examples"
     RELOCATABLE "plugins"
     )
-
