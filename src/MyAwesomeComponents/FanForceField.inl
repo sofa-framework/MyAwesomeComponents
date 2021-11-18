@@ -19,12 +19,9 @@
 *                                                                             *
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
-#ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_INL
-#define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_INL
+#pragma once
 
 #include <MyAwesomeComponents/FanForceField.h>
-//#include <ctime>
-
 
 namespace sofa::component::forcefield
 {
@@ -62,15 +59,11 @@ void FanForceField<DataTypes>::addForce(const core::MechanicalParams* /*params*/
     }
 
     sofa::helper::WriteAccessor<core::objectmodel::Data< VecDeriv> > force = currentForce; // create writer on the current force
-    for(int i = 0 ; i < m_topology->getNbPoints() ; i++)
+    for(sofa::Size i = 0 ; i < m_topology->getNbPoints() ; i++)
     {
         force[i] += d_force.getValue() * m_randForceCoeff; // Add asked force randomized with coeff
     }
 }
 
 } // namespace sofa::component::forcefield
-
-#endif // SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_INL
-
-
 

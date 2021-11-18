@@ -4,21 +4,18 @@
     <VisualStyle displayFlags="showVisual showBehaviorModels" />
 
     <!-- Specify the dependency to our plugin "MyAwesomeComponents" -->
+    <AddPluginRepository path="/data/Softwares/Releases/MyAwesomeComponents/build" />
     <RequiredPlugin pluginName="MyAwesomeComponents" />
 
     <!-- Specify all dependencies on SOFA modules -->
-    <RequiredPlugin pluginName='SofaBoundaryCondition'/>
-    <RequiredPlugin pluginName='SofaGeneralDeformable'/>
-    <RequiredPlugin pluginName='SofaImplicitOdeSolver'/>
-    <RequiredPlugin pluginName='SofaMiscCollision'/>
-    <RequiredPlugin pluginName='SofaMiscFem'/>
-    <RequiredPlugin pluginName='SofaOpenglVisual'/>
+    <RequiredPlugin pluginName='SofaBoundaryCondition SofaGeneralDeformable SofaImplicitOdeSolver SofaMiscCollision SofaMiscFem SofaOpenglVisual'/>
 
-    <CollisionPipeline verbose="0" />
-    <BruteForceDetection name="N2" />
-    <CollisionResponse response="default" />
+    <DefaultPipeline verbose="0" />
+    <BruteForceBroadPhase/>
+    <BVHNarrowPhase/>
+    <DefaultContactManager response="default" />
     <MinProximityIntersection name="Proximity" alarmDistance="0.8" contactDistance="0.5" />
-    <CollisionGroup />
+    <DefaultCollisionGroupManager />
     <Node name="SquareGravity">
         <EulerImplicitSolver name="cg_odesolver" printLog="false" />
         <CGLinearSolver iterations="25" name="linear solver" tolerance="1.0e-9" threshold="1.0e-9" />
@@ -39,11 +36,3 @@
         </Node>
     </Node>
 </Node>
-
-
-<!--
-
-<AddPluginRepository path="" />
-<PluginRequired pluginName="MyAwesomeComponents" />
-
--->

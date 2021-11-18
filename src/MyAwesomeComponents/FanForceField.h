@@ -19,8 +19,7 @@
 *                                                                             *
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
-#ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_H
-#define SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_H
+#pragma once
 
 #include <MyAwesomeComponents/config.h>
 
@@ -91,5 +90,3 @@ protected:
 #ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
 extern template class MYAWESOMECOMPONENTS_API FanForceField<defaulttype::Vec3Types>;
 #endif
-
-#endif // SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_H
