@@ -24,7 +24,7 @@
 #include <sofa/simulation/MechanicalVisitor.h>
 #include <sofa/simulation/MechanicalOperations.h>
 #include <sofa/simulation/VectorOperations.h>
-#include <sofa/helper/Quater.h>
+#include <sofa/type/Quat.h>
 #include <sofa/core/ObjectFactory.h>
 #include <sofa/core/behavior/MultiVec.h>
 #include <math.h>
