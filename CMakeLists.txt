@@ -26,10 +26,10 @@ add_library(${PROJECT_NAME} SHARED ${CONFIG_FILES} ${HEADER_FILES} ${SOURCE_FILE
 
 # Dependencies
 target_link_libraries(${PROJECT_NAME} PUBLIC
-    SofaCore
-    SofaHelper
-    SofaDefaultType
-    SofaSimulationCore
+    Sofa.Core
+    Sofa.Helper
+    Sofa.DefaultType
+    Sofa.Simulation.Core
     )
 
 # nested-namespace-definition requires compiler flag '/std:c++17'
