@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 project(MyAwesomeComponents VERSION 1.0)
 
 # SOFA packages containing our dependencies
-find_package(SofaFramework REQUIRED) # Needed to use SofaCore, SofaHelper and SofaDefaultType
+find_package(Sofa.Framework REQUIRED) # Needed to use SofaCore, SofaHelper and SofaDefaultType
 
 
 # Config files (tell SOFA this is a plugin)
