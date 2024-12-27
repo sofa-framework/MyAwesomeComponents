@@ -29,7 +29,7 @@
 #include <sofa/core/topology/BaseMeshTopology.h>
 
 
-namespace sofa::component::forcefield
+namespace sofa::component::mechanicalload
 {
 
 template<class DataTypes>
@@ -85,8 +85,10 @@ protected:
 
 };
 
-} // namespace sofa::component::forcefield
 
 #ifndef SOFA_COMPONENT_FORCEFIELD_FANFORCEFIELD_CPP
-extern template class MYAWESOMECOMPONENTS_API FanForceField<defaulttype::Vec3Types>;
+extern template class MYAWESOMECOMPONENTS_API FanForceField<sofa::defaulttype::Vec3Types>;
 #endif
+
+} // namespace sofa::component::mechanicalload
+

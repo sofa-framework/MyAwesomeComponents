@@ -23,7 +23,7 @@
 
 #include <MyAwesomeComponents/FanForceField.h>
 
-namespace sofa::component::forcefield
+namespace sofa::component::mechanicalload
 {
 
 template<class DataTypes>
@@ -65,5 +65,5 @@ void FanForceField<DataTypes>::addForce(const core::MechanicalParams* /*params*/
     }
 }
 
-} // namespace sofa::component::forcefield
+} // namespace sofa::component::mechanicalload
 

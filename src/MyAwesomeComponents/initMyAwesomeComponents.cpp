@@ -20,11 +20,14 @@
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
 #include <MyAwesomeComponents/config.h>
+#include <sofa/core/ObjectFactory.h>
+#include <sofa/helper/system/PluginManager.h>
 
-namespace sofa
+
+namespace myawesomecomponents
 {
-namespace component
-{
+
+extern void registerFanForceField(sofa::core::ObjectFactory* factory);
 
 extern "C" {
 
@@ -34,6 +37,9 @@ void initExternalModule()
     static bool first = true;
     if (first)
     {
+        // make sure that this plugin is registered into the PluginManager
+        sofa::helper::system::PluginManager::getInstance().registerPlugin(MODULE_NAME);
+        
         first = false;
     }
 }
@@ -41,13 +47,13 @@ void initExternalModule()
 MYAWESOMECOMPONENTS_API
 const char* getModuleName()
 {
-    return "MyAwesomeComponents";
+    return MODULE_NAME;
 }
 
 MYAWESOMECOMPONENTS_API
 const char* getModuleVersion()
 {
-    return "1.0";
+    return MODULE_VERSION;
 }
 
 MYAWESOMECOMPONENTS_API
@@ -69,7 +75,13 @@ const char* getModuleComponentList()
     return "FanForceField";
 }
 
+MYAWESOMECOMPONENTS_API
+void registerObjects(sofa::core::ObjectFactory* factory)
+{
+    registerFanForceField(factory);
+}
+
+
 } // extern "C"
 
-} // namespace component
-} // namespace sofa
+} // namespace myawesomecomponents

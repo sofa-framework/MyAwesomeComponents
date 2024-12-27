@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 project(MyAwesomeComponents VERSION 1.0)
 
 # SOFA packages containing our dependencies
-find_package(Sofa.Framework REQUIRED) # Needed to use SofaCore, SofaHelper and SofaDefaultType
+find_package(Sofa.Framework REQUIRED)
 
 
 # Config files (tell SOFA this is a plugin)
@@ -12,12 +12,12 @@ set(CONFIG_FILES
     )
 # Our nice new SOFA Components
 set(HEADER_FILES
-    src/MyAwesomeComponents/ExplicitBDFSolver.h
+    # src/MyAwesomeComponents/ExplicitBDFSolver.h
     src/MyAwesomeComponents/FanForceField.h
     src/MyAwesomeComponents/FanForceField.inl
     )
 set(SOURCE_FILES
-    src/MyAwesomeComponents/ExplicitBDFSolver.cpp
+    # src/MyAwesomeComponents/ExplicitBDFSolver.cpp
     src/MyAwesomeComponents/FanForceField.cpp
     )
 
@@ -34,7 +34,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 
 # nested-namespace-definition requires compiler flag '/std:c++17'
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    CXX_STANDARD 17
+    CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     )
 
