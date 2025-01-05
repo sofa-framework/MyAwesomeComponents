@@ -28,3 +28,9 @@
 #else
 #  define MYAWESOMECOMPONENTS_API SOFA_IMPORT_DYNAMIC_LIBRARY
 #endif
+
+namespace myawesomecomponents
+{
+    constexpr const char* MODULE_NAME = "@PROJECT_NAME@";
+    constexpr const char* MODULE_VERSION = "@PROJECT_VERSION@";
+} // namespace myawesomecomponents
