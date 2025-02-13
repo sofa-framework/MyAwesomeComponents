@@ -65,8 +65,8 @@ void ExplicitBDFSolver::solve(const core::ExecParams* params /* PARAMS FIRST */,
     mop->setImplicit(false); // this solver is explicit only
     
     /// Get the state vectors (stored in the MechanicalState/Object)
-    MultiVecCoord pos(&vop, core::VecCoordId::position() );
-    MultiVecDeriv f  (&vop, core::VecDerivId::force() );
+    MultiVecCoord pos(&vop, core::vec_id::write_access::position );
+    MultiVecDeriv f  (&vop, core::vec_id::write_access::force );
     MultiVecCoord newPos(&vop, xResult );
 
 
