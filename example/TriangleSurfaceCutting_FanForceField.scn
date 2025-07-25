@@ -6,7 +6,7 @@
     <VisualStyle displayFlags="showVisual showBehaviorModels" />
 
     <!-- Specify the dependency to our plugin "MyAwesomeComponents" -->
-    <AddPluginRepository path="/data/Softwares/Releases/MyAwesomeComponents/build" /> <!-- Make sure to CHANGE THIS PATH with your own -->
+    <AddPluginRepository path="/data/Softwares/SOFA_Releases/MyAwesomeComponents/build" /> <!-- Make sure to CHANGE THIS PATH with your own -->
     <RequiredPlugin pluginName="MyAwesomeComponents" />
 
     <!-- Specify all dependencies on SOFA modules -->
@@ -35,7 +35,7 @@
     <CollisionPipeline verbose="0" />
     <BruteForceBroadPhase/>
     <BVHNarrowPhase/>
-    <DefaultContactManager response="PenalityContactForceField" />
+    <CollisionResponse response="PenalityContactForceField" />
     <MinProximityIntersection name="Proximity" alarmDistance="0.8" contactDistance="0.5" />
 
     <Node name="SquareGravity">
@@ -45,7 +45,7 @@
         <include href="Objects/TriangleSetTopology.xml" src="@meshLoader" />
         <MechanicalObject name="MechanicalModel" template="Vec3d"/>
         <DiagonalMass massDensity="0.15" />
-        <FixedConstraint indices="0 1" />
+        <FixedProjectiveConstraint indices="0 1" />
         <TriangularFEMForceField name="FEM" youngModulus="60" poissonRatio="0.3" method="large" />
         <TriangularBendingSprings name="FEM-Bend" stiffness="300" damping="1.0" />
 

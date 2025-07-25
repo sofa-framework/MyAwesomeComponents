@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.22)
 project(MyAwesomeComponents VERSION 1.0)
 
 # SOFA packages containing our dependencies
@@ -7,17 +7,15 @@ find_package(Sofa.Framework REQUIRED)
 
 # Config files (tell SOFA this is a plugin)
 set(CONFIG_FILES
-    src/MyAwesomeComponents/config.h
     src/MyAwesomeComponents/initMyAwesomeComponents.cpp
     )
 # Our nice new SOFA Components
 set(HEADER_FILES
-    # src/MyAwesomeComponents/ExplicitBDFSolver.h
+    src/MyAwesomeComponents/config.h.in
     src/MyAwesomeComponents/FanForceField.h
     src/MyAwesomeComponents/FanForceField.inl
     )
 set(SOURCE_FILES
-    # src/MyAwesomeComponents/ExplicitBDFSolver.cpp
     src/MyAwesomeComponents/FanForceField.cpp
     )
 
