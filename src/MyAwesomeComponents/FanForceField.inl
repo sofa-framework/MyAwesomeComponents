@@ -23,7 +23,7 @@
 
 #include <MyAwesomeComponents/FanForceField.h>
 
-namespace sofa::component::mechanicalload
+namespace myawesomecomponents
 {
 
 template<class DataTypes>
@@ -50,7 +50,7 @@ void FanForceField<DataTypes>::init()
 
 
 template<class DataTypes>
-void FanForceField<DataTypes>::addForce(const core::MechanicalParams* /*params*/, DataVecDeriv& currentForce, const DataVecCoord& /*currentPosition*/, const DataVecDeriv& /*currentVelocities*/)
+void FanForceField<DataTypes>::addForce(const sofa::core::MechanicalParams* /*params*/, DataVecDeriv& currentForce, const DataVecCoord& /*currentPosition*/, const DataVecDeriv& /*currentVelocities*/)
 {
     float randProba = m_randomGenerator.random<float>(0, 1);
     if( randProba < d_randForceCoeffChangeProba.getValue() )
@@ -58,12 +58,12 @@ void FanForceField<DataTypes>::addForce(const core::MechanicalParams* /*params*/
         m_randForceCoeff = m_randomGenerator.random<float>(d_randForceMinCoeff.getValue(), d_randForceMaxCoeff.getValue()); // generating new random force coefficient
     }
 
-    sofa::helper::WriteAccessor<core::objectmodel::Data< VecDeriv> > force = currentForce; // create writer on the current force
+    sofa::helper::WriteAccessor<sofa::core::objectmodel::Data< VecDeriv> > force = currentForce; // create writer on the current force
     for(sofa::Size i = 0 ; i < m_topology->getNbPoints() ; i++)
     {
         force[i] += d_force.getValue() * m_randForceCoeff; // Add asked force randomized with coeff
     }
 }
 
-} // namespace sofa::component::mechanicalload
+} // namespace myawesomecomponents
 
