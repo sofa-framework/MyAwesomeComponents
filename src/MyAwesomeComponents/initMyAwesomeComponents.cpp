@@ -26,12 +26,19 @@
 
 namespace myawesomecomponents
 {
-
 extern void registerFanForceField(sofa::core::ObjectFactory* factory);
 
-extern "C" {
 
-MYAWESOMECOMPONENTS_API
+extern "C" {
+    MYAWESOMECOMPONENTS_API void initExternalModule();
+    MYAWESOMECOMPONENTS_API const char* getModuleName();
+    MYAWESOMECOMPONENTS_API const char* getModuleVersion();
+    MYAWESOMECOMPONENTS_API const char* getModuleLicense();
+    MYAWESOMECOMPONENTS_API const char* getModuleDescription();
+    MYAWESOMECOMPONENTS_API void registerObjects(sofa::core::ObjectFactory* factory);
+}
+
+
 void initExternalModule()
 {
     static bool first = true;
@@ -44,44 +51,43 @@ void initExternalModule()
     }
 }
 
-MYAWESOMECOMPONENTS_API
+
 const char* getModuleName()
 {
     return MODULE_NAME;
 }
 
-MYAWESOMECOMPONENTS_API
+
 const char* getModuleVersion()
 {
     return MODULE_VERSION;
 }
 
-MYAWESOMECOMPONENTS_API
+
 const char* getModuleLicense()
 {
     return "LGPL";
 }
 
-MYAWESOMECOMPONENTS_API
+
 const char* getModuleDescription()
 {
     return "SOFA plugin example";
 }
 
-MYAWESOMECOMPONENTS_API
+
 const char* getModuleComponentList()
 {
     // string containing the names of the classes provided by the plugin
     return "FanForceField";
 }
 
-MYAWESOMECOMPONENTS_API
+
 void registerObjects(sofa::core::ObjectFactory* factory)
 {
     registerFanForceField(factory);
 }
 
 
-} // extern "C"
 
 } // namespace myawesomecomponents

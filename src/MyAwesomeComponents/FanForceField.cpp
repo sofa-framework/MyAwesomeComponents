@@ -28,20 +28,16 @@
 #include <sofa/defaulttype/VecTypes.h>
 #include <sofa/defaulttype/RigidTypes.h>
 
-namespace sofa::component::mechanicalload
-{
-
-template class MYAWESOMECOMPONENTS_API sofa::component::mechanicalload::FanForceField<sofa::defaulttype::Vec3Types>;
-
-} // sofa::component::mechanicalload
-
-
 namespace myawesomecomponents
 {
+
+
 void registerFanForceField(sofa::core::ObjectFactory* factory)
 {
     factory->registerObjects(sofa::core::ObjectRegistrationData("Random forces applied to all mesh nodes")
-                             .add< sofa::component::mechanicalload::FanForceField<sofa::defaulttype::Vec3Types> >());
+                             .add< FanForceField<sofa::defaulttype::Vec3Types> >());
 }
+
+template class MYAWESOMECOMPONENTS_API FanForceField<sofa::defaulttype::Vec3Types>;
 
 } // myawesomecomponents

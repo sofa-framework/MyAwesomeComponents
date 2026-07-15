@@ -29,25 +29,25 @@
 #include <sofa/core/topology/BaseMeshTopology.h>
 
 
-namespace sofa::component::mechanicalload
+namespace myawesomecomponents
 {
 
 template<class DataTypes>
-class FanForceField : public core::behavior::ForceField<DataTypes>
+class FanForceField : public sofa::core::behavior::ForceField<DataTypes>
 {
 public:
-    SOFA_CLASS(SOFA_TEMPLATE(FanForceField, DataTypes), SOFA_TEMPLATE(core::behavior::ForceField, DataTypes));
+    SOFA_CLASS(SOFA_TEMPLATE(FanForceField, DataTypes), SOFA_TEMPLATE(sofa::core::behavior::ForceField, DataTypes));
 
-    typedef core::behavior::ForceField<DataTypes> Inherit;
+    typedef sofa::core::behavior::ForceField<DataTypes> Inherit;
     typedef typename DataTypes::Deriv Deriv;
     typedef typename DataTypes::VecCoord VecCoord;
     typedef typename DataTypes::VecDeriv VecDeriv;
-    typedef core::objectmodel::Data<VecCoord> DataVecCoord;
-    typedef core::objectmodel::Data<VecDeriv> DataVecDeriv;
+    typedef sofa::core::objectmodel::Data<VecCoord> DataVecCoord;
+    typedef sofa::core::objectmodel::Data<VecDeriv> DataVecDeriv;
 
 public:
     /// Force applied at each point
-    Data< Deriv > d_force;
+    sofa::core::objectmodel::Data< Deriv > d_force;
 
 protected:    
     /// Component constructor
@@ -60,21 +60,21 @@ public:
     void init() override;
 
     /// Forces addition for explicit and implicit integration schemes
-    virtual void addForce (const core::MechanicalParams* params, DataVecDeriv& currentForce, const DataVecCoord& currentPosition, const DataVecDeriv& currentVelocities) override;
+    virtual void addForce (const sofa::core::MechanicalParams* params, DataVecDeriv& currentForce, const DataVecCoord& currentPosition, const DataVecDeriv& currentVelocities) override;
 
     /// Forces addition for implicit integration schemes
-    virtual void addDForce(const core::MechanicalParams* /*mparams*/, DataVecDeriv& /*d_df*/ , const DataVecDeriv& /*d_dx*/) override {}
+    virtual void addDForce(const sofa::core::MechanicalParams* /*mparams*/, DataVecDeriv& /*d_df*/ , const DataVecDeriv& /*d_dx*/) override {}
 
-    virtual SReal getPotentialEnergy(const core::MechanicalParams* /*params*/, const DataVecCoord& /*x*/) const override { return 0; } // Keep it simple
+    virtual SReal getPotentialEnergy(const sofa::core::MechanicalParams* /*params*/, const DataVecCoord& /*x*/) const override { return 0; } // Keep it simple
 
 public:
 
     /// Range for random force coefficient : [randForceMin ; randForceMax]
-    Data<float> d_randForceMinCoeff;
-    Data<float> d_randForceMaxCoeff;
+    sofa::core::objectmodel::Data<float> d_randForceMinCoeff;
+    sofa::core::objectmodel::Data<float> d_randForceMaxCoeff;
 
     /// Probability to change random force coefficient
-    Data<float> d_randForceCoeffChangeProba;
+    sofa::core::objectmodel::   Data<float> d_randForceCoeffChangeProba;
 
 protected:
     /// Used to get random numbers
@@ -90,5 +90,5 @@ protected:
 extern template class MYAWESOMECOMPONENTS_API FanForceField<sofa::defaulttype::Vec3Types>;
 #endif
 
-} // namespace sofa::component::mechanicalload
+} // namespace myawesomecomponents
 
